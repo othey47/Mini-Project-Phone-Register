@@ -68,7 +68,6 @@ This is invalid number
 ### 💡 **Additional Challenges**
 
 1. 🔍 **Search by name** — allow the user to enter a name and retrieve their phone number.
-2. ➕ **Add new contact** — allow the user to add a new name and number to the directory.
 
 ---
 
@@ -97,7 +96,10 @@ This is invalid number
    ```
 
 ---
+## 📝 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+---
 ### 📘 **Author**
 
 Developed by **Othey47** — as part of Python learning mini-projects.
