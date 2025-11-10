@@ -13,9 +13,9 @@ contacts = [
 #===============================================================
 # 2. Check if number in records. 
 def check_number(user_number):
-    for Record in contacts:
-        if user_number == Record['Phone']:
-            return True, Record
+    for record in contacts:
+        if user_number == record['Phone']:
+            return True, record['Name']
     # if don't found anything ,return False
     return False,None
 
@@ -23,58 +23,98 @@ def check_number(user_number):
 # 3. handle input user.
 def check_input(num):
 
-    message_1 = str("Invalid input, Number not interger.")
-    message_2 = str("Invalid input, the number should be in range of 7-12 digits.")
-    message_3 = str("Input valid.")
+    # Message for user.
+    message_1 = str("Invalid input, Number not integer.")
+    message_2 = str("Invalid input, the number should be 10 digits.")
+    message_3 = str("Valid input.")
 
-    if type(num) != type(int(num)):
+    # store value of length validition
+    valid_length = not(len(str(num)) == 10)
+
+    if not isinstance(num, int):
         return False, message_1
-    elif not(num in range(11111111,999999999999)):
+    elif (valid_length):
         return False, message_2
     else:
         return True, message_3
      
 #===============================================================
 
+# 4. Add new user:
+def add_user(contacts):
 
-# 4. main controll to connect all func.
-def main():
-    try:
+    message = str([])
+    attempts = 0
+    
+    print("Add section : ")
+    user_name = str(input("Enter Name: ").rstrip())
+    
+    while(attempts < 3):
 
-        value = False
-        attemps = 0
+        try:
+            user_phone = int(input("Enter phone: "))
+        except ValueError:
+            print("This is invalid number.")
+            continue
+
+        result, message =  check_input(user_phone)    
         
-        print("Welcome to Phone Contacts")
-        number = 0
+        attempts += 1
 
-        while (value == True or attemps != 3):
-
-            
-            number = int(input("Enter Phone number: "))
-            attemps += 1
-
-            message = str([])
-            result , message = check_input(number)
-            
-            # if input invalid print message to user
-            if result != True:
-                print(message)
-            # if input valid print message to user.
-            else:
-                print(message)
-        
-
-        
-        check_num_val ,content_record = check_number(number)
-
-        if(check_num_val == True):
-                print(f"Record = {content_record}")
+        if  result != True:
+            print(f"{message}.")
         else:
-            print("Not found, try again")
- 
-    except ValueError:
-        print("Program crach. try again.")
+            user_dict = {"Name" : user_name,"Phone": user_phone}
+            contacts.append(user_dict)
+            return user_dict
 
+    print("You reached the limit.")
+    
+#===============================================================
+# 5. main controll to connect all func.
+def main():
+
+    attempts = 0
+        
+    print("==> Welcome to Phone Contacts.")
+    number = 0
+
+    while (attempts < 3):
+
+        try:
+            number = int(input("Enter Phone number: "))
+        except ValueError:
+            print("This is invalid number.")
+            continue
+
+        attempts += 1
+
+        message = str([])
+        result , message = check_input(number)
+            
+        # if input invalid print message to user
+        if result != True:
+            print(message)
+        # if input valid print message to user.
+        else:
+            print(message)
+                
+    check_num_val ,name_record = check_number(number)
+
+    if(check_num_val == True):
+        print(f"Name = {name_record}")
+
+    else:
+        print("=> Sorry, the number is not found.")
+        print("=> Add user record [Yes] or [NO] :")
+        choice = input("Enter your choice: ")
+
+        if choice.lower() == 'yes':
+            new_user = add_user(contacts)
+            print(f"New user : {new_user}.")    
+
+        elif choice.lower() == 'no':
+            print("Exit Program.")
 
 # 5. Run main func.
 main()
