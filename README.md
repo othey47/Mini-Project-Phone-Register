@@ -25,6 +25,10 @@ Build a program that represents a **phone directory**, which:
 
 * Receives a **phone number** as input.
 * Returns the **name** of the number’s owner if found.
+   or
+* Receives a **Name** as input.
+* Returns the **Phone number** for the phone of owner if found.
+
 
 #### 🧾 Directory Data
 
@@ -66,8 +70,17 @@ This is invalid number
 ---
 
 ### 💡 **Additional Challenges**
-
-1. 🔍 **Search by name** — allow the user to enter a name and retrieve their phone number.
+2. **Add data storage** :
+   - [ ] 1. Files.
+   - [ ] 2. CSV or JSON.
+2. **Add more features** :
+  - [ ] 1. Insert Fucntion.
+  - [ ] 2. Update Function.
+  - [ ] 3. Delete Function. 
+3. **Add User Interface**:
+  - [ ] 1. Terminal Interface.
+  - [ ] 2. Desktop Interface.
+  - [ ] 3. Web Interface.
 
 ---
 
@@ -86,13 +99,13 @@ This is invalid number
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/mini-project-phone-register.git
+   git clone + "link repo"
    cd mini-project-phone-register
    ```
 2. Run the program:
 
    ```bash
-   python3 phone_register.py
+   python3 contacts.py
    ```
 
 ---
