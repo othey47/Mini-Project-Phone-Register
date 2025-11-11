@@ -11,16 +11,28 @@ contacts = [
 ]
 
 #===============================================================
-# 2. Check if number in records. 
-def check_number(user_number):
+
+# 2. search on number in records. 
+def search_number(user_number):
     for record in contacts:
         if user_number == record['Phone']:
             return True, record['Name']
-    # if don't found anything ,return False
+    # if don't found anything ,return False.
     return False,None
 
 #================================================================
-# 3. handle input user.
+
+# 3. search on name in records.
+def search_name(user_name):
+    for record in contacts:
+        if user_name == record['Name']:
+            return True, record["Name"]
+    # if don't found anythingm return False.
+    return False, None
+
+#===============================================================
+# 4.  handle input user.
+
 def check_input(num):
 
     # Message for user.
@@ -39,8 +51,7 @@ def check_input(num):
         return True, message_3
      
 #===============================================================
-
-# 4. Add new user:
+# 5. Add new user:
 def add_user(contacts):
 
     message = str([])
@@ -71,7 +82,8 @@ def add_user(contacts):
     print("You reached the limit.")
     
 #===============================================================
-# 5. main controll to connect all func.
+
+# 6. main controll to connect all func.
 def main():
 
     attempts = 0
@@ -99,7 +111,7 @@ def main():
         else:
             print(message)
                 
-    check_num_val ,name_record = check_number(number)
+    check_num_val ,name_record = search_number(number)
 
     if(check_num_val == True):
         print(f"Name = {name_record}")
@@ -116,5 +128,5 @@ def main():
         elif choice.lower() == 'no':
             print("Exit Program.")
 
-# 5. Run main func.
+# 7. Run main func.
 main()
